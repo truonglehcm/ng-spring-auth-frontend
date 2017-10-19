@@ -1,0 +1,9 @@
+mat-card-content > * {
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    mat-card.reset-password-init-form {
+        box-shadow: unset;
+    }
+}

@@ -1,0 +1,10 @@
+mat-card-header > *,
+mat-card-content > * {
+    width: 100%;
+}
+
+mat-card-title h2 {
+    display: flex;
+    width: 100%;
+    text-align: center;
+}

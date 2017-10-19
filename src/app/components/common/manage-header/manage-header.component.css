@@ -1,0 +1,27 @@
+.example-space {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+material-app, mat-sidenav-container, .app-content {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .btn-menu-header.mat-button {
+        min-width: 30px;
+        padding: 0px;
+    }
+
+    mat-sidenav {
+        width: 80%;
+    }
+}
+
+@media (min-width: 601px) {
+    mat-sidenav {
+        width: 250px;
+    }
+}

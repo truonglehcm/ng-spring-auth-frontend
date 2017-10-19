@@ -1,0 +1,56 @@
+<mat-sidenav-container >
+  <mat-sidenav #sidenav mode="over" class="app-sidenav">
+    <mat-nav-list>
+      <button mat-menu-item routerLink="/">
+        <mat-icon> home </mat-icon>
+        <span> Ng-Spring-Auth </span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/manage/dashboard">
+        <mat-icon> dashboard </mat-icon>
+        <span> Dashboard </span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/manage/posts">
+        <mat-icon> view_list </mat-icon>
+        <span> Posts </span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/manage/tags">
+        <mat-icon> subject </mat-icon>
+        <span> Tags </span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/manage/apis">
+        <mat-icon> subject </mat-icon>
+        <span> Apis </span>
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+    <button mat-button class="btn-menu-header" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+  
+    <span routerLink="/">Ng-Spring-Auth</span>
+  
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-space"></span>
+  
+    <button mat-button [matMenuTriggerFor]="appMenu" class="btn-menu-header" matTooltip="Select action">
+      <mat-icon [fxShow]="isAuthenticate">account_circle</mat-icon>
+      <mat-icon [fxHide]="isAuthenticate">more_vert</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item [fxShow]="isAuthenticate" routerLink="/manage/profile">
+      <mat-icon>info_outline</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item [fxShow]="isAuthenticate" routerLink="/auth/logout">
+      <mat-icon>power_settings_new</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+
+  <div class="app-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
