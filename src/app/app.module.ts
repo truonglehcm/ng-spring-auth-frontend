@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpModule, JsonpModule} from '@angular/http';
+import { BrowserXhr, HttpModule, JsonpModule} from '@angular/http';
 import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +12,7 @@ import { Ng2UiAuthModule } from 'ng2-ui-auth';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { AppRoutingModule } from './app-routing.module';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
 
 import { AuthConfig } from './app-config.module';
 import { RoleGuard } from './guards/auth/role.guard';
@@ -78,6 +79,8 @@ import { ResetPasswordService } from './services/reset-password/reset-password.s
     BrowserAnimationsModule,
     HttpModule, JsonpModule,
 
+    NgProgressModule,
+
     // flex-layout module
     FlexLayoutModule,
 
@@ -103,7 +106,8 @@ import { ResetPasswordService } from './services/reset-password/reset-password.s
     Ng2UiAuthModule.forRoot(AuthConfig),
     FormsModule, ReactiveFormsModule
   ],
-  providers: [PostService, SignupService, ResetPasswordService, AuthActiveGuard, AuthDeactiveGuard, RoleGuard],
+  providers: [PostService, SignupService, ResetPasswordService, AuthActiveGuard, AuthDeactiveGuard, RoleGuard,
+    { provide: BrowserXhr, useClass: NgProgressBrowserXhr }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
