@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { IResetPassword } from '../../../models/reset-password';
-import { ResetPasswordService } from '../../../services/reset-password/reset-password.service';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-finish',
@@ -14,7 +14,7 @@ export class FinishComponent implements OnInit {
   private token: String;
   private form: FormGroup;
 
-  constructor(private resetPasswordService: ResetPasswordService, private route: ActivatedRoute,
+  constructor(private userService: UserService, private route: ActivatedRoute,
       private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -29,9 +29,9 @@ export class FinishComponent implements OnInit {
   }
 
   reset(confirmData: IResetPassword) {
-    this.resetPasswordService.resetPasswordConfirm(confirmData).subscribe({
+    this.userService.resetPasswordConfirm(confirmData).subscribe({
       error: (err: any) => console.dir(err),
       complete: () => this.router.navigateByUrl('/auth/login')
-  });
+    });
   }
 }

@@ -1,0 +1,44 @@
+<div fxLayout fxFlexFill fxLayoutGap.xs="0px" fxLayoutAlign="center">
+  <mat-tab-group class="profile-form" fxFlex.xs="100%" fxFlex="80%">
+    <mat-tab label="Profile">
+        <div flex>
+          <form fxLayout="column" [formGroup]="formProfile" (ngSubmit)="updateProfile(formProfile.value)">
+              <mat-form-field>
+                <input matInput placeholder="Username" [formControl]="formProfile.controls['username']" readonly="readonly" autocomplete="off">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="First Name" [formControl]="formProfile.controls['firstName']" autocomplete="off">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Last Name" [formControl]="formProfile.controls['lastName']" autocomplete="off">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Email" [formControl]="formProfile.controls['email']" readonly="readonly" autocomplete="off">
+              </mat-form-field>
+              <div>
+                <button mat-button color="primary" type="submit" [disabled]="!formProfile.valid">Submit</button>
+              </div>
+          </form>
+        </div>
+    </mat-tab>
+    
+    <mat-tab label="Password">
+        <div flex>
+          <form fxLayout="column" [formGroup]="formPassword" (ngSubmit)="changePassword(formPassword.value)">
+              <mat-form-field>
+                  <input matInput placeholder="Old Password" type="password" [formControl]="formPassword.controls['oldPassword']" autocomplete="off">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="New Password" type="password" [formControl]="formPassword.controls['newPassword']" autocomplete="off">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Confirm New Password" type="password" [formControl]="formPassword.controls['newPasswordConfirm']" autocomplete="off">
+              </mat-form-field>
+              <div>
+                <button mat-button color="primary" type="submit" [disabled]="!formPassword.valid">Submit</button>
+              </div>
+          </form>
+        </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

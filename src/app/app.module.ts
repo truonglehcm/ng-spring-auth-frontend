@@ -21,14 +21,14 @@ import { AuthActiveGuard, AuthDeactiveGuard } from './guards/auth/auth.guard';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/common/header/header.component';
 import { HomeComponent } from './components/home/home.component';
-import { PostDetailComponent } from './components/post-detail/post-detail.component';
-import { PostsComponent } from './components/posts/posts.component';
+import { PostDetailComponent } from './components/home/post-detail/post-detail.component';
+import { PostsComponent } from './components/home/posts/posts.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { SignupConfirmComponent } from './components/auth/signup-confirm/signup-confirm.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
-import { DashboardComponent } from './components/manage/dashboard/dashboard.component';
+import { DashboardComponent } from './components/manage/manage-dashboard/dashboard.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { InitComponent } from './components/reset-password/init/init.component';
 import { FinishComponent } from './components/reset-password/finish/finish.component';
@@ -41,11 +41,11 @@ import { ManageUsersDetailComponent } from './components/manage/manage-users-det
 import { ManageUsersComponent } from './components/manage/manage-users/manage-users.component';
 import { ManageTagsComponent } from './components/manage/manage-tags/manage-tags.component';
 import { ManageApiComponent } from './components/manage/manage-api/manage-api.component';
-import { ProfileComponent } from './components/manage/profile/profile.component';
+import { ProfileComponent } from './components/manage/manage-profile/profile.component';
 
 import { PostService } from './services/post/post.service';
 import { SignupService } from './services/signup/signup.service';
-import { ResetPasswordService } from './services/reset-password/reset-password.service';
+import { UserService } from './services/user/user.service';
 
 @NgModule({
   declarations: [
@@ -106,8 +106,11 @@ import { ResetPasswordService } from './services/reset-password/reset-password.s
     Ng2UiAuthModule.forRoot(AuthConfig),
     FormsModule, ReactiveFormsModule
   ],
-  providers: [PostService, SignupService, ResetPasswordService, AuthActiveGuard, AuthDeactiveGuard, RoleGuard,
-    { provide: BrowserXhr, useClass: NgProgressBrowserXhr }],
+  providers: [
+    PostService, SignupService, UserService,
+    AuthActiveGuard, AuthDeactiveGuard, RoleGuard,
+    { provide: BrowserXhr, useClass: NgProgressBrowserXhr }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

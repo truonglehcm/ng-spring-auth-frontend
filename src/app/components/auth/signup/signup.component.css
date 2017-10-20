@@ -8,3 +8,10 @@ mat-card-title h2 {
     width: 100%;
     text-align: center;
 }
+
+
+@media (max-width: 600px) {
+    mat-card.signup-form {
+        box-shadow: unset;
+    }
+}

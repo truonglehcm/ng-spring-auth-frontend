@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user/user.service';
+import { IProfile } from '../../models/profile';
 
 @Component({
   selector: 'app-manage',
@@ -7,9 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }
