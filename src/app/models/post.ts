@@ -6,5 +6,6 @@ export interface IPost {
     logoUrl: String;
     createAt: String;
     createBy: String;
+    visible: Boolean;
     visited: number;
 }

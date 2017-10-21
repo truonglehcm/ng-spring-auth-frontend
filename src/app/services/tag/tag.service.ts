@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response, Request, RequestMethod , RequestOptionsArgs, RequestOptions, URLSearchParams} from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import { IPost } from '../../models/post';
-import { AppSettings } from '../../app-config.module';
 import { JwtHttp } from 'ng2-ui-auth';
+import { Observable } from 'rxjs/Observable';
+import { ITag } from '../../models/tag';
+import { AppSettings } from '../../app-config.module';
 
 @Injectable()
-export class PostService {
+export class TagService {
 
   constructor(private http: JwtHttp) { }
 
-  getPosts(): Observable<IPost[]> {
-    return this.http.get(AppSettings.API_POSTS)
+  getTags(): Observable<ITag[]> {
+    return this.http.get(AppSettings.API_MANAGE_TAGS)
       .map((response) => {
         let content;
         const obj = response.json();
@@ -24,8 +22,8 @@ export class PostService {
       });
   }
 
-  getPost(id: number): Observable<IPost[]> {
-    return this.http.get(AppSettings.API_POSTS + id)
+  getTag(id: number): Observable<ITag[]> {
+    return this.http.get(AppSettings.API_MANAGE_TAGS + id)
       .map((response) => {
         let content;
         const obj = response.json();
@@ -37,8 +35,8 @@ export class PostService {
       });
   }
 
-  addPost(dataPost: IPost) {
-    return this.http.post(AppSettings.API_MANAGE_POSTS, dataPost)
+  addTag(dataTag: ITag) {
+    return this.http.post(AppSettings.API_MANAGE_TAGS, dataTag)
     .map((response) => {console.log(response);
       let content;
       content = {
@@ -49,9 +47,9 @@ export class PostService {
     });
   }
 
-  updatePost(id: number, dataPost: IPost) {
-    const reqUrl = AppSettings.API_MANAGE_POSTS + id;
-    return this.http.put(reqUrl, dataPost)
+  updateTag(id: number, dataTag: ITag) {
+    const reqUrl = AppSettings.API_MANAGE_TAGS + id;
+    return this.http.put(reqUrl, dataTag)
     .map((response) => {
       let content;
       content = {
@@ -62,8 +60,8 @@ export class PostService {
     });
   }
 
-  deletePost(id: number) {
-    return this.http.delete(AppSettings.API_MANAGE_POSTS + id)
+  deleteTag(id: number) {
+    return this.http.delete(AppSettings.API_MANAGE_TAGS + id)
     .map((response) => {
       let content;
       content = {

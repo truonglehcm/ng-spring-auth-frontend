@@ -1,12 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ViewChild } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { BrowserXhr, HttpModule, JsonpModule} from '@angular/http';
+import { BrowserXhr, HttpModule, JsonpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatMenuModule, MatButtonModule, MatIconModule, MatDialogModule, MatTabsModule,
-          MatTooltipModule, MatCardModule, MatSidenavModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatMenuModule, MatButtonModule, MatIconModule, MatDialogModule, MatTabsModule, MatTableModule,
+          MatPaginatorModule, MatTooltipModule, MatCardModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatSortModule,
+          MatCheckboxModule
+       } from '@angular/material';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { Ng2UiAuthModule } from 'ng2-ui-auth';
 import { RecaptchaModule } from 'ng-recaptcha';
@@ -46,6 +49,8 @@ import { ProfileComponent } from './components/manage/manage-profile/profile.com
 import { PostService } from './services/post/post.service';
 import { SignupService } from './services/signup/signup.service';
 import { UserService } from './services/user/user.service';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { TagService } from './services/tag/tag.service';
 
 @NgModule({
   declarations: [
@@ -72,12 +77,14 @@ import { UserService } from './services/user/user.service';
     ManageApiComponent,
     ProfileComponent,
     AuthComponent,
-    SignupConfirmComponent
+    SignupConfirmComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule, JsonpModule,
+    HttpClientModule,
 
     NgProgressModule,
 
@@ -99,6 +106,10 @@ import { UserService } from './services/user/user.service';
     MatFormFieldModule,
     MatInputModule,
     MatTabsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
+    MatCheckboxModule,
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule,
     FroalaEditorModule.forRoot(),
@@ -107,7 +118,7 @@ import { UserService } from './services/user/user.service';
     FormsModule, ReactiveFormsModule
   ],
   providers: [
-    PostService, SignupService, UserService,
+    PostService, SignupService, UserService, TagService,
     AuthActiveGuard, AuthDeactiveGuard, RoleGuard,
     { provide: BrowserXhr, useClass: NgProgressBrowserXhr }
   ],

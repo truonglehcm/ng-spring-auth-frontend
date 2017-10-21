@@ -1,5 +1,25 @@
-<div fxLayout fxFlexFill fxLayoutGap.xs="0px" fxLayoutAlign="center">
-      <p>
-        manage-post-detail works!
-      </p>
+<div fxLayout fxLayoutGap.xs="0px" fxLayoutAlign="center">
+  <div flex fxFlex.xs="100%" fxFlex="80%">
+    <form fxLayout="column" [formGroup]="formPost" (ngSubmit)="savePost(formPost.value)">
+        <mat-form-field>
+          <input matInput placeholder="Title" fxFlex="100" [formControl]="formPost.controls['title']" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput [froalaEditor] placeholder="Description" fxFlex [formControl]="formPost.controls['description']" autocomplete="off"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput [froalaEditor] placeholder="Content" fxFlex [formControl]="formPost.controls['content']" autocomplete="off"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Logo Url" fxFlex [formControl]="formPost.controls['logoUrl']" autocomplete="off">
+        </mat-form-field>
+        <div fxFlex [fxShow]="isNew">
+          <mat-checkbox [formControl]="formPost.controls['visible']">Enabled</mat-checkbox>
+        </div>
+        <div fxFlex>
+          <button mat-button color="primary" type="submit" [disabled]="!formPost.valid">Submit</button>
+          <button mat-button color="primary" routerLink="/manage/posts">Cancel</button>
+        </div>
+    </form>
+  </div>
 </div>

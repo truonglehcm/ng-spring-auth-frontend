@@ -1,13 +1,13 @@
 <mat-toolbar color="primary">
-  <span routerLink="/">Ng-Spring-Auth</span>
+    <span routerLink="/">Ng-Spring-Auth</span>
 
-  <!-- This fills the remaining space of the current row -->
-  <span class="example-space"></span>
+    <!-- This fills the remaining space of the current row -->
+    <span class="header-space"></span>
 
-  <button mat-button [matMenuTriggerFor]="appMenu" class="btn-menu-header" matTooltip="Select action">
-    <mat-icon [fxShow]="isAuthenticate">account_circle</mat-icon>
-    <mat-icon [fxHide]="isAuthenticate">more_vert</mat-icon>
-  </button>
+    <button mat-button [matMenuTriggerFor]="appMenu" class="btn-menu-header">
+      <mat-icon [fxShow]="isAuthenticate">account_circle</mat-icon>
+      <mat-icon [fxHide]="isAuthenticate">more_vert</mat-icon>
+    </button>
 </mat-toolbar>
 
 <mat-menu #appMenu="matMenu">

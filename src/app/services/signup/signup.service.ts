@@ -10,9 +10,7 @@ export class SignupService {
   constructor(private http: Http) { }
 
   getRecaptchaKey(): Observable<String> {
-    let option: RequestOptions;
-    option = this.setHttpGetParam(AppSettings.API_SIGNUP);
-    return this.http.request(AppSettings.API_SIGNUP, option)
+    return this.http.request(AppSettings.API_SIGNUP)
       .map((response) => {
         let content;
         const obj = response.json();
@@ -22,16 +20,6 @@ export class SignupService {
         };
         return content;
       });
-  }
-
-  private setHttpGetParam(url: string): RequestOptions {
-    const param = new URLSearchParams();
-    const options: RequestOptionsArgs = {
-      method: 'get',
-      url: url,
-      search: param
-    };
-    return new RequestOptions(options);
   }
 
   signup(signupData: ISignup): Observable<void> {

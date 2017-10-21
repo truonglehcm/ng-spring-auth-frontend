@@ -9,6 +9,10 @@
         <mat-icon> dashboard </mat-icon>
         <span> Dashboard </span>
       </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/manage/users">
+        <mat-icon> group </mat-icon>
+        <span> Users </span>
+      </button>
       <button mat-menu-item (click)="sidenav.toggle()" routerLink="/manage/posts">
         <mat-icon> view_list </mat-icon>
         <span> Posts </span>

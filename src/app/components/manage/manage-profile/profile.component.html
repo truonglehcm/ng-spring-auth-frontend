@@ -4,18 +4,18 @@
         <div flex>
           <form fxLayout="column" [formGroup]="formProfile" (ngSubmit)="updateProfile(formProfile.value)">
               <mat-form-field>
-                <input matInput placeholder="Username" [formControl]="formProfile.controls['username']" readonly="readonly" autocomplete="off">
+                <input matInput placeholder="Username" fxFlex="100" [formControl]="formProfile.controls['username']" readonly="readonly" autocomplete="off">
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="First Name" [formControl]="formProfile.controls['firstName']" autocomplete="off">
+                <input matInput placeholder="First Name" fxFlex [formControl]="formProfile.controls['firstName']" autocomplete="off">
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="Last Name" [formControl]="formProfile.controls['lastName']" autocomplete="off">
+                <input matInput placeholder="Last Name" fxFlex [formControl]="formProfile.controls['lastName']" autocomplete="off">
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="Email" [formControl]="formProfile.controls['email']" readonly="readonly" autocomplete="off">
+                <input matInput placeholder="Email" fxFlex [formControl]="formProfile.controls['email']" readonly="readonly" autocomplete="off">
               </mat-form-field>
-              <div>
+              <div fxFlex>
                 <button mat-button color="primary" type="submit" [disabled]="!formProfile.valid">Submit</button>
               </div>
           </form>

@@ -6,18 +6,16 @@ import { IProfile } from '../../models/profile';
 import { IPassword } from '../../models/password';
 import { IResetPassword } from '../../models/reset-password';
 import { UserProfile } from '../../models/user-profile';
-import { AuthService } from 'ng2-ui-auth';
+import { AuthService, JwtHttp } from 'ng2-ui-auth';
+import { IUser } from '../../models/user';
 
 @Injectable()
 export class UserService {
 
-  constructor(private http: Http, private auth: AuthService) { }
+  constructor(private http: JwtHttp, private auth: AuthService) { }
 
   getProfile(): Observable<UserProfile[]> {
-    let option: RequestOptions;
-    option = this.setHttpGetParam(AppSettings.API_USER_PROFILE);
-    const requestUrl = AppSettings.API_USER_PROFILE;
-    return this.http.request(requestUrl, option)
+    return this.http.get(AppSettings.API_USER_PROFILE)
       .map((response) => {
         let content;
         const obj = response.json();
@@ -56,9 +54,7 @@ export class UserService {
   }
 
   updateProfile(dataProfile: IProfile): Observable<void> {
-    let option: RequestOptions;
-    option = this.setHttpPutParam(AppSettings.API_USER_PROFILE);
-    return this.http.post(AppSettings.API_USER_PROFILE, dataProfile, option)
+    return this.http.put(AppSettings.API_USER_PROFILE, dataProfile)
       .map((response) => {
         let content;
         content = {
@@ -70,9 +66,7 @@ export class UserService {
   }
 
   changePassword(passwordData: IPassword): Observable<void> {
-    let option: RequestOptions;
-    option = this.setHttpPutParam(AppSettings.API_CHANGE_PASSWORD);
-    return this.http.post(AppSettings.API_CHANGE_PASSWORD, passwordData, option)
+    return this.http.put(AppSettings.API_CHANGE_PASSWORD, passwordData)
       .map((response) => {
         let content;
         content = {
@@ -83,26 +77,66 @@ export class UserService {
       });
   }
 
-
-  private setHttpGetParam(url: string): RequestOptions {
-    const headers = new Headers();
-    headers.append('Authorization', this.auth.getToken());
-    const options: RequestOptionsArgs = {
-      headers: headers,
-      method: 'get',
-      url: url
-    };
-    return new RequestOptions(options);
+  getUsers(): Observable<IUser[]> {
+    return this.http.get(AppSettings.API_MANAGE_USERS)
+      .map((response) => {
+        let content;
+        const obj = response.json();
+        content = {
+          error: null,
+          data: obj
+        };
+        return content;
+      });
   }
 
-  private setHttpPutParam(url: string): RequestOptions {
-    const headers = new Headers();
-    headers.append('Authorization', this.auth.getToken());
-    const options: RequestOptionsArgs = {
-      headers: headers,
-      method: 'put',
-      url: url
-    };
-    return new RequestOptions(options);
+  getUser(id: number): Observable<IUser[]> {
+    return this.http.get(AppSettings.API_MANAGE_USERS + id)
+      .map((response) => {
+        let content;
+        const obj = response.json();
+        content = {
+          error: null,
+          data: obj
+        };
+        return content;
+      });
+  }
+
+  addUser(dataUser: IUser) {
+    return this.http.post(AppSettings.API_MANAGE_USERS, dataUser)
+    .map((response) => {console.log(response);
+      let content;
+      content = {
+        error: null,
+        data: response.status
+      };
+      return content;
+    });
+  }
+
+  updateUser(id: number, dataUser: IUser) {
+    const reqUrl = AppSettings.API_MANAGE_USERS + id;
+    return this.http.put(reqUrl, dataUser)
+    .map((response) => {
+      let content;
+      content = {
+        error: null,
+        data: response.status
+      };
+      return content;
+    });
+  }
+
+  deleteUser(id: number) {
+    return this.http.delete(AppSettings.API_MANAGE_USERS + id)
+    .map((response) => {
+      let content;
+      content = {
+        error: null,
+        data: response.status
+      };
+      return content;
+    });
   }
 }

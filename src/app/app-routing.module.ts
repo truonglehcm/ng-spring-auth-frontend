@@ -46,7 +46,7 @@ const routes: Routes = [
       { path: '', redirectTo: '/manage/dashboard', pathMatch: 'full' },
       { path: 'dashboard',  component: DashboardComponent },
       { path: 'posts',      component: ManagePostComponent },
-      { path: 'posts/:id',  component: ManagePostDetailComponent },
+      { path: 'posts/:id',  component: ManagePostDetailComponent},
       { path: 'tags',       component: ManageTagsComponent },
       { path: 'tags/:id',   component: ManageTagsDetailComponent },
       { path: 'users',      component: ManageUsersComponent },
