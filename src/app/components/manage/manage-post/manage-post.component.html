@@ -1,64 +1,66 @@
 <div fxLayout fxFlexFill fxLayoutGap.xs="0px" fxLayoutAlign="center">
   <mat-card fxFlex.xs="100%" fxFlex="80%">  
     <mat-card-header>
-        <button mat-button color="primary" routerLink="/manage/posts/0">
+        <button mat-button mat-raised-button color="primary" routerLink="/manage/posts/0">
           <mat-icon >add</mat-icon>
         </button>
     </mat-card-header>
     <mat-card-content>
-      <mat-table fxFlexFill #tablePost [dataSource]="dataSource" matSort>
+      <div class="manage-table-container-container">
+        <mat-table fxFlexFill #tablePost [dataSource]="dataSource" matSort>
 
-        <!-- ID Column -->
-        <ng-container matColumnDef="title">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
-          <mat-cell *matCellDef="let row"> 
-            <a routerLink="/manage/posts/{{row.id}}"> {{row.title | truncate: 30 }} </a>
-          </mat-cell>
-        </ng-container>
-    
-        <!-- Create Date Column -->
-        <ng-container matColumnDef="createAt">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Create Date </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.createAt}} </mat-cell>
-        </ng-container>
-    
-        <!-- Create By Column -->
-        <ng-container matColumnDef="createBy">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Create By </mat-header-cell>
-          <mat-cell *matCellDef="let row" > {{row.createBy}} </mat-cell>
-        </ng-container>
-    
-        <!-- Logo Column -->
-        <ng-container matColumnDef="logo">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Logo </mat-header-cell>
-          <mat-cell *matCellDef="let row" > {{row.logoUrl | truncate: 30}} </mat-cell>
-        </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+            <mat-cell *matCellDef="let row"> 
+              <a routerLink="/manage/posts/{{row.id}}"> {{row.title | truncate: 30 }} </a>
+            </mat-cell>
+          </ng-container>
+      
+          <!-- Create Date Column -->
+          <ng-container matColumnDef="createAt">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Create Date </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.createAt}} </mat-cell>
+          </ng-container>
+      
+          <!-- Create By Column -->
+          <ng-container matColumnDef="createBy">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Create By </mat-header-cell>
+            <mat-cell *matCellDef="let row" > {{row.createBy}} </mat-cell>
+          </ng-container>
+      
+          <!-- Logo Column -->
+          <ng-container matColumnDef="logo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Logo </mat-header-cell>
+            <mat-cell *matCellDef="let row" > {{row.logoUrl | truncate: 40}} </mat-cell>
+          </ng-container>
 
-        <!-- Visible Column -->
-        <ng-container matColumnDef="visible">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Visible </mat-header-cell>
-          <mat-cell *matCellDef="let row" > {{row.visible}} </mat-cell>
-        </ng-container>
+          <!-- Visible Column -->
+          <ng-container matColumnDef="visible">
+            <mat-header-cell style="text-align: center" *matHeaderCellDef mat-sort-header> Visible </mat-header-cell>
+            <mat-cell style="text-align: center" *matCellDef="let row" > {{row.visible}} </mat-cell>
+          </ng-container>
 
-        <!-- Delete Column -->
-        <ng-container matColumnDef="delete">
-          <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-          <mat-cell *matCellDef="let row" > 
-            <button mat-button color="primary" (click)="deletePost(row.id)">
-              <mat-icon >delete</mat-icon>
-            </button> 
-          </mat-cell>
-        </ng-container>
+          <!-- Delete Column -->
+          <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+            <mat-cell *matCellDef="let row" > 
+              <button mat-button color="primary" (click)="deletePost(row.id)">
+                <mat-icon >delete</mat-icon>
+              </button> 
+            </mat-cell>
+          </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
       <mat-paginator #paginator
                     [length]="this.dataSize"
                     [pageIndex]="0"
                     [pageSize]="25"
                     [pageSizeOptions]="[5, 10, 25, 100]">
       </mat-paginator>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>

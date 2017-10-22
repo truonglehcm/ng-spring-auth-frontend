@@ -4,6 +4,7 @@ export interface IUser {
     firstName: String;
     lastName: String;
     email: String;
+    password: String;
     enabled: boolean;
     expired: boolean;
     locked: boolean;

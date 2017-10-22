@@ -48,8 +48,7 @@ export class TagService {
   }
 
   updateTag(id: number, dataTag: ITag) {
-    const reqUrl = AppSettings.API_MANAGE_TAGS + id;
-    return this.http.put(reqUrl, dataTag)
+    return this.http.put(AppSettings.API_MANAGE_TAGS, dataTag)
     .map((response) => {
       let content;
       content = {

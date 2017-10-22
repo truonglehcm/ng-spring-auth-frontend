@@ -1,5 +1,32 @@
-<div fxLayout fxFlexFill fxLayoutGap.xs="0px" fxLayoutAlign="center">
-  <p>
-    manage-users-detail works!
-  </p>
+<div fxLayout fxLayoutGap.xs="0px" fxLayoutAlign="center">
+  <div flex fxFlex.xs="100%" fxFlex="80%">
+    <form fxLayout="column" [formGroup]="formUser" (ngSubmit)="saveUser(formUser.value)">
+        <mat-form-field>
+          <input matInput [formControl]="formUser.controls['userName']"  placeholder="Username" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [formControl]="formUser.controls['firstName']"  placeholder="First Name" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [formControl]="formUser.controls['lastName']"  placeholder="Last Name" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [formControl]="formUser.controls['email']" placeholder="Email" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field [fxShow]="userId <= 0">
+          <input matInput type="password" [formControl]="formUser.controls['password']" placeholder="Password" autocomplete="off">
+        </mat-form-field>
+
+        <section fxFlex>
+          <mat-checkbox class="example-margin" [formControl]="formUser.controls['enabled']">Enabled</mat-checkbox>
+          <mat-checkbox class="example-margin" [formControl]="formUser.controls['expired']">Expired</mat-checkbox>
+          <mat-checkbox class="example-margin" [formControl]="formUser.controls['locked']">Locked</mat-checkbox>
+        </section>
+
+        <div fxFlex>
+          <button mat-button color="primary" type="submit" [disabled]="!formUser.valid">Submit</button>
+          <button mat-button color="primary" routerLink="/manage/users">Cancel</button>
+        </div>
+    </form>
+  </div>
 </div>

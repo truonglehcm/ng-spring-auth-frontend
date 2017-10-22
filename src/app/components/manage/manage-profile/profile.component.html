@@ -16,7 +16,7 @@
                 <input matInput placeholder="Email" fxFlex [formControl]="formProfile.controls['email']" readonly="readonly" autocomplete="off">
               </mat-form-field>
               <div fxFlex>
-                <button mat-button color="primary" type="submit" [disabled]="!formProfile.valid">Submit</button>
+                <button mat-button  mat-raised-button color="primary" type="submit" [disabled]="!formProfile.valid">Submit</button>
               </div>
           </form>
         </div>
@@ -35,7 +35,7 @@
                 <input matInput placeholder="Confirm New Password" type="password" [formControl]="formPassword.controls['newPasswordConfirm']" autocomplete="off">
               </mat-form-field>
               <div>
-                <button mat-button color="primary" type="submit" [disabled]="!formPassword.valid">Submit</button>
+                <button mat-button mat-raised-button color="primary" type="submit" [disabled]="!formPassword.valid">Submit</button>
               </div>
           </form>
         </div>

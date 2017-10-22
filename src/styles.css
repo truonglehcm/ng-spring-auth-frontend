@@ -6,3 +6,8 @@ html, body {
     height: 100%;
     margin: 0;
 }
+
+.mat-cell, .mat-header-cell {
+    overflow: hidden;
+    word-wrap: break-word;
+}

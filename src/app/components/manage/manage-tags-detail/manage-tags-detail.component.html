@@ -1,5 +1,16 @@
-<div fxLayout fxFlexFill fxLayoutGap.xs="0px" fxLayoutAlign="center">
-  <p>
-    manage-tags-detail works!
-  </p>
+<div fxLayout fxLayoutGap.xs="0px" fxLayoutAlign="center">
+  <div flex fxFlex.xs="100%" fxFlex="80%">
+    <form fxLayout="column" [formGroup]="formTag" (ngSubmit)="saveTag(formTag.value)">
+        <mat-form-field>
+          <input matInput placeholder="Tag Name" [formControl]="formTag.controls['name']" autocomplete="off">
+        </mat-form-field>
+        <div fxFlex>
+          <mat-checkbox [formControl]="formTag.controls['visible']">Enabled</mat-checkbox>
+        </div>
+        <div fxFlex>
+          <button mat-button mat-raised-button color="primary" type="submit" [disabled]="!formTag.valid">Submit</button>
+          <button mat-button mat-raised-button color="primary" routerLink="/manage/tags">Cancel</button>
+        </div>
+    </form>
+  </div>
 </div>

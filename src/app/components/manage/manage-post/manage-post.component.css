@@ -1,0 +1,29 @@
+.mat-column-visible ,
+.mat-column-delete {
+    max-width: 10%;
+}
+
+
+/* Structure */
+.manage-table-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.manage-table-header {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    font-size: 20px;
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.mat-header-cell .mat-sort-header-sorted {
+    color: black;
+}

@@ -14,7 +14,7 @@ export class ManageTagsComponent implements OnInit {
 
   private dataSize: number;
   private dataSource: TagDataSource;
-  private displayedColumns = ['tagName', 'visible', 'delete'];
+  private displayedColumns = ['name', 'visible', 'delete'];
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -38,7 +38,6 @@ export class ManageTagsComponent implements OnInit {
 
     this.dataSource = new TagDataSource(result.data, this.sort);
     this.dataSize = result.data.length;
-    console.dir(result.data);
   }
 
   deleteTag(id: number) {

@@ -1,7 +1,7 @@
 <div fxLayout fxFlexFill fxLayoutGap.xs="0px" fxLayoutAlign="center">
     <mat-card fxFlex.xs="100%" fxFlex="80%">  
       <mat-card-header>
-          <button mat-button color="primary" routerLink="/manage/tags/0">
+          <button mat-button mat-raised-button color="primary" routerLink="/manage/tags/0">
             <mat-icon >add</mat-icon>
           </button>
       </mat-card-header>
@@ -9,16 +9,16 @@
         <mat-table fxFlexFill #tableTag [dataSource]="dataSource" matSort>
   
           <!-- ID Column -->
-          <ng-container matColumnDef="tagName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> tagName </mat-header-cell>
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Tag Name </mat-header-cell>
             <mat-cell *matCellDef="let row"> 
-              <a routerLink="/manage/tags/{{row.id}}"> {{row.tagName | truncate: 30 }} </a>
+              <a routerLink="/manage/tags/{{row.id}}"> {{row.name | truncate: 30 }} </a>
             </mat-cell>
           </ng-container>
       
           <!-- Visible Column -->
           <ng-container matColumnDef="visible">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> visible </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Visible </mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.visible}} </mat-cell>
           </ng-container>
   
