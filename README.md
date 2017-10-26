@@ -2,7 +2,7 @@
 The frontend integrate with  [ng-spring-auth-backend](https://github.com/truonglehcm/ng-spring-auth-backend)
 
 # Requirements
-* [Angular CLI](https://github.com/angular/angular-cli)
+* [Angular CLI >= 1.4.7](https://github.com/angular/angular-cli)
 
 # Run
 * Run ng-spring-auth-backend
