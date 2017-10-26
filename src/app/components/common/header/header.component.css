@@ -1,17 +1,19 @@
-.header-space {
-    flex: 1 1 auto;
-    text-align: center;
-}
-
 @media (max-width: 600px) {
-    .btn-menu-header.mat-button {
+    .btn-menu-header.btn-menu-header-left {
         min-width: 30px;
         padding: 0px;
+        margin-left: -8px;
+    }
+
+    .btn-menu-header.btn-menu-header-right {
+        min-width: 30px;
+        padding: 0px;
+        margin-right: -8px;
     }
 }
 
 @media (min-width: 601px) {
-    .btn-menu-header.mat-button {
+    .btn-menu-header.btn-menu-header-left {
         min-width: 56px;
     }
 }

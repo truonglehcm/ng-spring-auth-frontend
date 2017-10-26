@@ -29,7 +29,7 @@
   </mat-sidenav>
 
   <mat-toolbar color="primary">
-    <button mat-button class="btn-menu-header" (click)="sidenav.toggle()">
+    <button mat-icon-button class="btn-menu-header" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
     </button>
   
@@ -38,7 +38,7 @@
     <!-- This fills the remaining space of the current row -->
     <span class="example-space"></span>
   
-    <button mat-button [matMenuTriggerFor]="appMenu" class="btn-menu-header" matTooltip="Select action">
+    <button mat-icon-button [matMenuTriggerFor]="appMenu" class="btn-menu-header" >
       <mat-icon [fxShow]="isAuthenticate">account_circle</mat-icon>
       <mat-icon [fxHide]="isAuthenticate">more_vert</mat-icon>
     </button>
@@ -54,7 +54,7 @@
     </button>
   </mat-menu>
 
-  <div class="app-content">
+  <div id="appContent" class="app-content">
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>

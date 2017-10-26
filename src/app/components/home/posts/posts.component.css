@@ -1,14 +1,38 @@
-@media (min-width: 601px) {
-    mat-card {
-        margin-top: 5px;
-    }
+
+mat-card.card-post mat-card-header {
+    max-height: 108px;
+    min-height: 108px;
 }
+
+mat-card.card-post .mat-card-image {
+    max-height: 180px;
+    min-height: 180px;
+}
+
+mat-card.card-post mat-card-title {
+    max-height: 65px;
+}
+
+mat-card.card-post mat-card-subtitle {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+mat-card.card-post mat-card-content {
+    max-height: 105px;
+    min-height: 105px;
+    line-height: 105px;
+}
+
+mat-card.card-post .mat-card-actions {
+    margin: 0;
+}
+
 
 .ellipsis {
     display: block;
     display: -webkit-box;
     max-width: 100%;
-    height: 75px;
     margin: 0 auto;
     font-size: 14px;
     line-height: 1.5;
@@ -30,9 +54,4 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.mat-card-image {
-    max-height: 150px;
-    max-width: 150px;
 }

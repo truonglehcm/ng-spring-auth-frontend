@@ -11,3 +11,34 @@ html, body {
     overflow: hidden;
     word-wrap: break-word;
 }
+
+@media (max-width: 600px) {
+    mat-sidenav-container mat-sidenav {
+        width: 80%;
+    }
+
+    #appMainContent,
+    #appContent {
+        margin-top: 56px;
+    }
+}
+
+@media (min-width: 601px) {
+    mat-card {
+        margin: 5px;
+    }
+
+    mat-sidenav-container mat-sidenav {
+        min-width: 250px;
+    }
+
+    #appMainContent,
+    #appContent {
+        margin-top: 70px;
+    }
+}
+
+.mat-toolbar {
+    position: fixed;
+    z-index: 2;
+}

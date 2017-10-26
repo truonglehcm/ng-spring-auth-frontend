@@ -1,10 +1,14 @@
 <mat-toolbar color="primary">
+    <button mat-icon-button [fxHide.gt-xs]="true" class="btn-menu-header btn-menu-header-left" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+
     <span routerLink="/">Ng-Spring-Auth</span>
 
     <!-- This fills the remaining space of the current row -->
-    <span class="header-space"></span>
+    <span fxFlex></span>
 
-    <button mat-button [matMenuTriggerFor]="appMenu" class="btn-menu-header">
+    <button mat-button [matMenuTriggerFor]="appMenu" class="btn-menu-header btn-menu-header-right">
       <mat-icon [fxShow]="isAuthenticate">account_circle</mat-icon>
       <mat-icon [fxHide]="isAuthenticate">more_vert</mat-icon>
     </button>
@@ -32,3 +36,37 @@
     <span>Logout</span>
   </button>
 </mat-menu>
+
+<mat-sidenav-container>
+    <!-- slidenav -->
+    <mat-sidenav #sidenav mode="over" >
+        <mat-nav-list>
+        <button mat-menu-item (click)="sidenav.toggle()" routerLink="/">
+            <mat-icon> dashboard </mat-icon>
+            <span> Angular </span>
+        </button>
+        <button mat-menu-item (click)="sidenav.toggle()" routerLink="/">
+            <mat-icon> group </mat-icon>
+            <span> Spring </span>
+        </button>
+        <button mat-menu-item (click)="sidenav.toggle()" routerLink="/">
+            <mat-icon> view_list </mat-icon>
+            <span> Hibernate </span>
+        </button>
+        <button mat-menu-item (click)="sidenav.toggle()" routerLink="/">
+            <mat-icon> subject </mat-icon>
+            <span> Reactjs </span>
+        </button>
+        <button mat-menu-item (click)="sidenav.toggle()" routerLink="/">
+            <mat-icon> subject </mat-icon>
+            <span> Vuejs </span>
+        </button>
+        </mat-nav-list>
+    </mat-sidenav>
+    
+    <mat-sidenav-content data-scrollbar id="appMainContent" class="app-main-content" fxLayout="column">
+        <div fxFlex>
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
